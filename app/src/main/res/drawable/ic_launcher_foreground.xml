@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- أقواس الواقع المعزز (مسح الكاميرا) -->
+    <path
+        android:pathData="M30,40 L30,30 L40,30 M68,30 L78,30 L78,40 M30,68 L30,78 L40,78 M68,78 L78,78 L78,68"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <!-- هوائي الشخصية -->
+    <path
+        android:pathData="M54,43 L54,38"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round" />
+    <path android:fillColor="#FFC107" android:pathData="M51,35 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0 Z" />
+    <!-- الرأس -->
+    <path android:fillColor="#FFFFFF" android:pathData="M39,58 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0 Z" />
+    <!-- العينان -->
+    <path android:fillColor="#311B92" android:pathData="M45.9,56 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0 Z" />
+    <path android:fillColor="#311B92" android:pathData="M56.9,56 a2.6,2.6 0 1,0 5.2,0 a2.6,2.6 0 1,0 -5.2,0 Z" />
+    <!-- الخدان -->
+    <path android:fillColor="#FF8A80" android:pathData="M42.3,62 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0 Z" />
+    <path android:fillColor="#FF8A80" android:pathData="M61.3,62 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0 Z" />
+    <!-- الابتسامة -->
+    <path
+        android:pathData="M48.5,62 Q54,67.5 59.5,62"
+        android:strokeColor="#311B92"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round" />
+</vector>

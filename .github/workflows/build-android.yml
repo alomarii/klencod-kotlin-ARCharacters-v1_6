@@ -1,0 +1,47 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: إنشاء ملف APK للتصحيح
+    # نثبّت إصدار الجهاز بدل ubuntu-latest حتى لا يظهر تنبيه الانتقال إلى Ubuntu 26
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      # إصدارات تعمل على Node.js 24 فلا يظهر تحذير إيقاف Node.js 20
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # Android SDK موجود مسبقاً في الجهاز وتراخيصه مقبولة، فلا حاجة لخطوة تثبيت
+
+      # المشروع يحتاج Gradle 8.7 (متوافق مع AGP 8.5.2)
+      - name: Install Gradle 8.7
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/gradle.zip" https://services.gradle.org/distributions/gradle-8.7-bin.zip
+          unzip -q "$RUNNER_TEMP/gradle.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-8.7/bin" >> "$GITHUB_PATH"
+
+      - name: Build debug APK
+        run: |
+          if [ -x ./gradlew ]; then ./gradlew --no-daemon :app:assembleDebug
+          else gradle --no-daemon :app:assembleDebug; fi
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v6
+        with:
+          name: klencode-kotlin-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
